@@ -16,29 +16,35 @@ function buildCharts(pokemon1, pokemon2) {
         var pk1_stats = [+pk1[0].Attack, +pk1[0].Defense, +pk1[0]["Sp. Atk"], +pk1[0]["Sp. Def"], +pk1[0].Speed]
         var pk2_stats = [+pk2[0].Attack, +pk2[0].Defense, +pk2[0]["Sp. Atk"], +pk2[0]["Sp. Def"], +pk2[0].Speed]
 
+        var type1 = pk1[0]["Type 1"]
+        var type2 = pk2[0]["Type 1"]
+        var color1 = typeColors.filter(c => c.type == type1);
+        var color2 = typeColors.filter(c => c.type == type2);
+
         const pokemons = {
             labels: ['Attack', 'Defense', 'Sp. Atk', 'Sp. Defense', 'Speed'],
             datasets: [{
                 label: pk1[0].Name,
                 data: pk1_stats,
                 fill: true,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235)',
-                pointBackgroundColor: 'rgba(54, 162, 235)',
+                backgroundColor: color1[0].surfaceColor,
+                borderColor: color1[0].hoverColor,
+                pointBackgroundColor: color1[0].hoverColor,
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(54, 162, 235)'
+                pointHoverBorderColor: color1[0].hoverColor
             }, {
                 label: pk2[0].Name,
                 data: pk2_stats,
                 fill: true,
-                backgroundColor: 'rgb(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: color2[0].surfaceColor,
+                borderColor: color2[0].hoverColor,
+                pointBackgroundColor: color2[0].hoverColor,
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
+                pointHoverBorderColor: color2[0].hoverColor
             }
+
             ]
         } // END of pokemobs comparison
 
