@@ -15,6 +15,7 @@ function buildCharts(pokemon1, pokemon2) {
 
         var pk1_stats = [+pk1[0].Attack, +pk1[0].Defense, +pk1[0]["Sp. Atk"], +pk1[0]["Sp. Def"], +pk1[0].Speed]
         var pk2_stats = [+pk2[0].Attack, +pk2[0].Defense, +pk2[0]["Sp. Atk"], +pk2[0]["Sp. Def"], +pk2[0].Speed]
+        var max_stats = Math.max(...[Math.max(...pk1_stats), Math.max(...pk2_stats)])
 
         var type1 = pk1[0]["Type 1"]
         var type2 = pk2[0]["Type 1"]
@@ -60,7 +61,7 @@ function buildCharts(pokemon1, pokemon2) {
                 scales: {
                     r: {
                         suggestedMin: 50,
-                        suggestedMax: 150
+                        suggestedMax: max_stats + 10
                     }
                 }
             }
