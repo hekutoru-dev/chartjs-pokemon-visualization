@@ -3,8 +3,6 @@ var url = "static/data/pokemon.csv"
 
 d3.csv(url).then(data => {
 
-
-
     // Get values for radar chart.
     var pk1 = data.filter(d => d.Name === "Pikachu")
     var pk2 = data.filter(d => d.Name === "Charmander")
@@ -68,7 +66,16 @@ d3.csv(url).then(data => {
 // Build bar chart from init.
 function init() {
 
+    var selector = d3.selectAll(".pokemons");
+
     d3.csv(url).then((data) => {
+
+        data.forEach((d) => {
+            selector
+                .append("option")
+                .text(d.Name)
+                .property("value", d.Name)
+        }) // END foreach
 
         // Extract pokemon types for Type 1.
         var holder = {};
@@ -120,8 +127,7 @@ function init() {
 
 
     });
-
 }
 
-
+// Start logic.
 init();
