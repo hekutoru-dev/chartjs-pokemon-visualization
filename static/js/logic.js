@@ -1,67 +1,74 @@
 // Call csv dataset.
 var url = "static/data/pokemon.csv"
 
-d3.csv(url).then(data => {
+function buildCharts(pokemon1, pokemon2) {
 
-    // Get values for radar chart.
-    var pk1 = data.filter(d => d.Name === "Pikachu")
-    var pk2 = data.filter(d => d.Name === "Charmander")
+    if (secondChart) {
+        secondChart.destroy()
+    }
 
-    var pk1_stats = [+pk1[0].Attack, +pk1[0].Defense, +pk1[0]["Sp. Atk"], +pk1[0]["Sp. Def"], +pk1[0].Speed]
-    var pk2_stats = [+pk2[0].Attack, +pk2[0].Defense, +pk2[0]["Sp. Atk"], +pk2[0]["Sp. Def"], +pk2[0].Speed]
+    d3.csv(url).then(data => {
 
-    const pokemons = {
-        labels: ['Attack', 'Defense', 'Sp. Atk', 'Sp. Defense', 'Speed'],
-        datasets: [{
-            label: pk1[0].Name,
-            data: pk1_stats,
-            fill: true,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235)',
-            pointBackgroundColor: 'rgba(54, 162, 235)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(54, 162, 235)'
-        }, {
-            label: pk2[0].Name,
-            data: pk2_stats,
-            fill: true,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }
-        ]
-    } // END of pokemobs comparison
+        // Get values for radar chart.
+        var pk1 = data.filter(d => d.Name === pokemon1)
+        var pk2 = data.filter(d => d.Name === pokemon2)
 
-    var config_radar = {
-        type: 'radar',
-        data: pokemons,
-        options: {
-            elements: {
-                line: {
-                    borderWidth: 3
-                }
-            },
-            scales: {
-                r: {
-                    suggestedMin: 50,
-                    suggestedMax: 150
+        var pk1_stats = [+pk1[0].Attack, +pk1[0].Defense, +pk1[0]["Sp. Atk"], +pk1[0]["Sp. Def"], +pk1[0].Speed]
+        var pk2_stats = [+pk2[0].Attack, +pk2[0].Defense, +pk2[0]["Sp. Atk"], +pk2[0]["Sp. Def"], +pk2[0].Speed]
+
+        const pokemons = {
+            labels: ['Attack', 'Defense', 'Sp. Atk', 'Sp. Defense', 'Speed'],
+            datasets: [{
+                label: pk1[0].Name,
+                data: pk1_stats,
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235)',
+                pointBackgroundColor: 'rgba(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(54, 162, 235)'
+            }, {
+                label: pk2[0].Name,
+                data: pk2_stats,
+                fill: true,
+                backgroundColor: 'rgb(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }
+            ]
+        } // END of pokemobs comparison
+
+        var config_radar = {
+            type: 'radar',
+            data: pokemons,
+            options: {
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        suggestedMin: 50,
+                        suggestedMax: 150
+                    }
                 }
             }
-        }
-    } // END of radar.
+        } // END of radar.
 
-    // Plot Radar chart
-    secondChart = new Chart(
-        document.getElementById('statsChart'),
-        config_radar
-    );
+        // Plot Radar chart
+        secondChart = new Chart(
+            document.getElementById('statsChart'),
+            config_radar
+        );
 
-}); // END reading csv file.
+    }); // END reading csv file.
 
+} // END function buildCharts
 
 // Build bar chart from init.
 function init() {
@@ -124,10 +131,18 @@ function init() {
             document.getElementById('typeChart'),
             config
         );
-
-
     });
+} // END function init.
+
+// Check when pokemon selection changes.
+function optionChange() {
+
+    var pok1 = d3.select("#pokemon1").property("value");
+    var pok2 = d3.select("#pokemon2").property("value");
+
+    buildCharts(pok1, pok2);
 }
 
 // Start logic.
+var secondChart;
 init();
