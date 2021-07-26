@@ -59,7 +59,7 @@ function buildCharts(pokemon1, pokemon2) {
                     }
                 },
                 scales: {
-                    r: {
+                    r: {                        
                         suggestedMin: 50,
                         suggestedMax: max_stats + 10
                     }

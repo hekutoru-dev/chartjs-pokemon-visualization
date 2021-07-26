@@ -1,34 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
     <!-- D3 & Char.js CDN -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
+
 <body>
 
-    <!-- Canvas required for chart.js -->
-    <div>        
-        <canvas id="typeChart" height="100"></canvas>        
+    <div class="container">
+        <!-- Canvas required for chart.js -->
+        <div class="card" id="pokemon-type">
+            <canvas id="typeChart" height="250"></canvas>
+        </div>
     </div>
 
-    <!-- Pokemon selectors -->
-    <div>
-        <select class="pokemons" id="pokemon1" onchange="optionChange(this.value)"></select>
-        <select class="pokemons" id="pokemon2" onchange="optionChange(this.value)"></select>
-    </div>
 
-    <div>
-        <canvas id="statsChart" height="80"></canvas>
+    <div class="container">
+        <div class="card" id="pokemon-vs">
+            <!-- Pokemon selectors -->
+            <div class="card-header">
+                <div>
+                    <select class="pokemons" id="pokemon1" onchange="optionChange(this.value)"></select>
+                    <select class="pokemons" id="pokemon2" onchange="optionChange(this.value)"></select>
+                </div>
+            </div>
+
+            <div id="radar-div">
+                <canvas id="statsChart" width="500" height="500"></canvas>
+            </div>
+        </div>
     </div>
+    
+
 
     <!-- Add my script. -->
     <script src="static/js/colors.js"></script>
     <script src="static/js/logic.js"></script>
-    
+
 </body>
+
 </html>
