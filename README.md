@@ -7,10 +7,12 @@ This visualization explores the use of chart js to chart a simple dataset that c
 
 The first is a bar chart that plots the number of pokemons according to their types 1 and 2 individually.
 
-(image1)
+![Bar Chart](static/img/type_bar_chart.png)
 
 
 
 ## Face-to-face pokemon
 
 The second visualizations add interactivity to select a pokemon name from 2 different list selectors. Then using javascript it finds the selected pokemons to plot a radar chart and explore their stats to comapare both.
+
+![Radar Chart](static/img/face_to_face.png)
