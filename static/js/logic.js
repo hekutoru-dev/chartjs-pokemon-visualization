@@ -59,7 +59,7 @@ function buildCharts(pokemon1, pokemon2) {
                     }
                 },
                 scales: {
-                    r: {                        
+                    r: {
                         suggestedMin: 50,
                         suggestedMax: max_stats + 10
                     }
@@ -115,8 +115,8 @@ function init() {
             labels: types,
             datasets: [{
                 label: 'Pokemon Findings',
-                backgroundColor: 'rgb(255, 99, 132, 0.3)',
-                borderColor: 'rgb(255, 99, 132)', // Works for line chart only
+                backgroundColor: ' rgb(33, 199, 109, 0.1)',
+                borderColor: ' rgb(33, 199, 109)', // Works for line chart only
                 borderWidth: 1,
                 data: values,
             }]
