@@ -105,7 +105,7 @@ function init() {
         for (var prop in holder) {
             objTypes.push({ type: prop, value: holder[prop] });
         }
-        console.log(objTypes);
+        //console.log(objTypes);
 
         const types = objTypes.map(d => d.type);
         const values = objTypes.map(d => d.value);

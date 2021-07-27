@@ -15,7 +15,7 @@
         crossorigin="anonymous"></script>
 
     <!-- D3 & Char.js CDN -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="static/css/style.css">
@@ -32,21 +32,42 @@
 
 
     <div class="container">
-        <div class="card" id="pokemon-vs">
-            <!-- Pokemon selectors -->
-            <div class="card-header">
-                <div>
-                    <select class="pokemons" id="pokemon1" onchange="optionChange(this.value)"></select>
-                    <select class="pokemons" id="pokemon2" onchange="optionChange(this.value)"></select>
+
+        <div class="row row-cols-3">
+
+            <div class="col-3">
+                <div class="card card-pokemon" id="card-pokemon1">
+                    Pokemon Image 1
                 </div>
             </div>
 
-            <div id="radar-div">
-                <canvas id="statsChart" width="500" height="500"></canvas>
+            <div class="col-6">
+                <div class="card" id="pokemon-vs">
+                    <!-- Pokemon selectors -->
+                    <div class="card-header">
+                        <div>
+                            <select class="pokemons" id="pokemon1" onchange="optionChange(this.value)"></select>
+                            <select class="pokemons" id="pokemon2" onchange="optionChange(this.value)"></select>
+                        </div>
+                    </div>
+
+                    <div id="radar-div">
+                        <canvas id="statsChart"></canvas>
+                    </div>
+                </div>
             </div>
+            <!--END RADAR CARD -->
+
+            <div class="col-3">
+                <div class="card card-pokemon" id="card-pokemon2">
+                    Pokemon Image 2
+                </div>
+            </div>
+
         </div>
+
     </div>
-    
+    <!--END RADAR CONTAINER -->
 
 
     <!-- Add my script. -->
