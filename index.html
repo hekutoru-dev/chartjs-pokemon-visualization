@@ -31,17 +31,24 @@
     </div>
 
 
-    <div class="container">
+    <div class="container" id="radar-container">
 
-        <div class="row row-cols-3">
+        <div class="row ">
 
-            <div class="col-3">
-                <div class="card card-pokemon" id="card-pokemon1">
-                    Pokemon Image 1
+            <div class="col-sm-3">
+                <div class="card" id="card-pokemon1">
+                    <div class="card-header">
+                        <h6 class="card-title">Pokemon 1 Image</h6>
+                    </div>                
+                    <div class="card-body">                        
+                        <p class="card-text"></p>
+                    </div>                    
                 </div>
             </div>
 
-            <div class="col-6">
+            
+
+            <div class="col-sm-6">
                 <div class="card" id="pokemon-vs">
                     <!-- Pokemon selectors -->
                     <div class="card-header">
@@ -51,23 +58,30 @@
                         </div>
                     </div>
 
-                    <div id="radar-div">
+                    <div class="card-body">
                         <canvas id="statsChart"></canvas>
                     </div>
+
+                    <div id="radar-div"></div>
+
                 </div>
             </div>
             <!--END RADAR CARD -->
 
-            <div class="col-3">
-                <div class="card card-pokemon" id="card-pokemon2">
-                    Pokemon Image 2
+            <div class="col-sm-3">
+                <div class="card" id="card-pokemon1">
+                    <div class="card-header">
+                        <h6 class="card-title">Pokemon 2 Image</h6>
+                    </div>                   
+                    <div class="card-body">                        
+                        <p class="card-text"></p>
+                    </div>                    
                 </div>
             </div>
 
-        </div>
-
+        </div> <!-- END RADAR ROW -->
     </div>
-    <!--END RADAR CONTAINER -->
+    <!--END RADAR CONTAINER -->  
 
 
     <!-- Add my script. -->
