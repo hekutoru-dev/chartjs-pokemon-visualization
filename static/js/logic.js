@@ -31,12 +31,12 @@ function buildCharts(pokemon1, pokemon2) {
                 label: pk1[0].Name,
                 data: pk1_stats,
                 fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(145, 91, 219, 0.2)',
+                borderColor: 'rgb(145, 91, 219)',
+                pointBackgroundColor: 'rgb(145, 91, 219)',
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
+                pointHoverBorderColor: 'rgb(145, 91, 219)'
             }, {
                 label: pk2[0].Name,
                 data: pk2_stats,
