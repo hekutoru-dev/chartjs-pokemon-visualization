@@ -73,6 +73,10 @@ function buildCharts(pokemon1, pokemon2) {
             config_radar
         );
 
+        document.getElementById('img-pokemon1').src=`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pk1[0]["#"]}.png`
+        document.getElementById('img-pokemon2').src=`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pk2[0]["#"]}.png`
+        
+
     }); // END reading csv file.
 
 } // END function buildCharts

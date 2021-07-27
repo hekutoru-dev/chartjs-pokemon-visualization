@@ -80,8 +80,13 @@ var typeColors = [
         hoverColor: 'rgba(62, 208, 218)',
     },
     {
-        type: "Ice",
+        type: "Flying",
         surfaceColor: 'rgba(124, 202, 254, 0.2)',
         hoverColor: 'rgba(124, 202, 254)',
+    },
+    {
+        type: "Ice",
+        surfaceColor: 'rgba(201, 247, 255, 0.2)',
+        hoverColor: 'rgba(201, 247, 255)',
     }
 ]
