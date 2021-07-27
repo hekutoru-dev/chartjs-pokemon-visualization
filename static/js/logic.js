@@ -22,28 +22,31 @@ function buildCharts(pokemon1, pokemon2) {
         var color1 = typeColors.filter(c => c.type == type1);
         var color2 = typeColors.filter(c => c.type == type2);
 
+        document.getElementById('card-bg-pokemon1').style.backgroundColor = color1[0].surfaceColor
+        document.getElementById('card-bg-pokemon2').style.backgroundColor = color2[0].surfaceColor
+
         const pokemons = {
             labels: ['Attack', 'Defense', 'Sp. Atk', 'Sp. Defense', 'Speed'],
             datasets: [{
                 label: pk1[0].Name,
                 data: pk1_stats,
                 fill: true,
-                backgroundColor: color1[0].surfaceColor,
-                borderColor: color1[0].hoverColor,
-                pointBackgroundColor: color1[0].hoverColor,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: color1[0].hoverColor
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
             }, {
                 label: pk2[0].Name,
                 data: pk2_stats,
                 fill: true,
-                backgroundColor: color2[0].surfaceColor,
-                borderColor: color2[0].hoverColor,
-                pointBackgroundColor: color2[0].hoverColor,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: color2[0].hoverColor
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
             }
 
             ]
@@ -117,7 +120,7 @@ function getTypes(data, pokemon_type) {
     });
 
     var types = objTypes.map(d => d.type);
-    var values = objTypes.map(d => d.value);    
+    var values = objTypes.map(d => d.value);
 
     return [types, values];
 }
