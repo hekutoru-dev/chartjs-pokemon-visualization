@@ -3,9 +3,9 @@
 }
 
 #types-title {
-    background-color: rgb(33, 199, 109, 0.1);
+    background-color: rgb(216, 43, 74, 0.15);
     border: 1px solid;
-    border-color: rgb(33, 199, 109);
+    border-color: rgb(216, 43, 74);
     border-radius: 8px;
     padding-top: 5px;      
     padding-bottom: 5px;      
@@ -14,7 +14,7 @@
 }
 
 #pokemon-types-title {
-    color: rgb(36, 154, 91);
+    color: rgb(216, 43, 74);
 }
 
 #radar-container {
