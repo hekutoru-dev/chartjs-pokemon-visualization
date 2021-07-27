@@ -73,13 +73,54 @@ function buildCharts(pokemon1, pokemon2) {
             config_radar
         );
 
-        document.getElementById('img-pokemon1').src=`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pk1[0]["#"]}.png`
-        document.getElementById('img-pokemon2').src=`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pk2[0]["#"]}.png`
-        
+        document.getElementById('img-pokemon1').src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pk1[0]["#"]}.png`
+        document.getElementById('img-pokemon2').src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pk2[0]["#"]}.png`
 
     }); // END reading csv file.
 
 } // END function buildCharts
+
+/** 
+ * @param {*} data 
+ * @param {*} pokemon_type 
+ * 
+ * Get the total number of pokemons for Type 1 and Type 2
+ */
+function getTypes(data, pokemon_type) {
+
+    var holder = {};
+    data.forEach(function (d) {
+
+        if (d[pokemon_type] !== "") {
+            if (holder.hasOwnProperty(d[pokemon_type])) {
+                holder[d[pokemon_type]] = holder[d[pokemon_type]] + 1;
+            } else {
+                holder[d[pokemon_type]] = 1;
+            }
+        }
+
+    });
+
+    var objTypes = [];
+    for (var prop in holder) {
+        objTypes.push({ type: prop, value: holder[prop] });
+    }
+
+    objTypes.sort(function (a, b) {
+        if (a.type > b.type) {
+            return 1;
+        }
+        if (a.type < b.type) {
+            return -1
+        }
+        return 0;
+    });
+
+    var types = objTypes.map(d => d.type);
+    var values = objTypes.map(d => d.value);    
+
+    return [types, values];
+}
 
 // Build bar chart from init.
 function init() {
@@ -93,37 +134,29 @@ function init() {
                 .append("option")
                 .text(d.Name)
                 .property("value", d.Name)
-        }) // END foreach
+        }) // END foreach        
 
-        // Extract pokemon types for Type 1.
-        var holder = {};
-        data.forEach(function (d) {
-            if (holder.hasOwnProperty(d["Type 1"])) {
-                holder[d["Type 1"]] = holder[d["Type 1"]] + 1;
-            } else {
-                holder[d["Type 1"]] = 1;
-            }
-        });
-
-        var objTypes = [];
-        for (var prop in holder) {
-            objTypes.push({ type: prop, value: holder[prop] });
-        }
-        //console.log(objTypes);
-
-        const types = objTypes.map(d => d.type);
-        const values = objTypes.map(d => d.value);
+        let [types, values] = getTypes(data, "Type 1")
+        let [types2, values2] = getTypes(data, "Type 2")
 
         // Config chart and plot all polemon different types.
         const chart = {
             labels: types,
             datasets: [{
-                label: 'Pokemon Findings',
-                backgroundColor: ' rgb(33, 199, 109, 0.1)',
+                label: 'Type 1 Pokemon Findings',
+                backgroundColor: ' rgb(33, 199, 109, 0.3)',
                 borderColor: ' rgb(33, 199, 109)', // Works for line chart only
                 borderWidth: 1,
                 data: values,
-            }]
+            },
+            {
+                label: 'Type 2 Pokemon Findings',
+                backgroundColor: ' rgb(250, 207, 139, 0.3)',
+                borderColor: ' rgb(250, 207, 139)', // Works for line chart only
+                borderWidth: 1,
+                data: values2
+            }
+            ]
         };
 
         const config = {
